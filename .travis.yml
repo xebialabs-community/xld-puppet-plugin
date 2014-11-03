@@ -1,1 +1,12 @@
 language: java
+notifications:
+  hipchat:
+    rooms:
+      secure: JFfYMom54QORGsAUbqM/oUI2+/IU+9YGkNxc6ne8/vUjWAgcDxMGUesjx5ZhCoubr2kkw+sIfWEUABbyWQxkrlKHL3Zupezh18rPUxShI7gVTXrcQmlvck4RRDcBQYOCx+BPdzCCygXzyVYGBEMB6KtXeXhyNqD6BUn2lr5ShRU=
+deploy:
+  provider: releases
+  api_key:
+    secure: DZc+uRLKkptVx7vhvdtyP7HFHf09BjvXwFgqpNr7H63tIHdtErxCsMfQ5X6IjAJ+P66y4gBFKXKfv4pP58YRFNbZlJitkYW/Y3c1PLIMh3JlWgWnuF5/w3KYl9rru3sBNBlrnNw2wpxfpDQPa8ye0JEbDeMyB/EIsN01l84cgaM=
+  file: build/lib/xld-puppet-plugin-1.0.jar
+  on:
+    repo: xebialabs-community/xld-puppet-plugin
