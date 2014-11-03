@@ -6,12 +6,13 @@ See the **XL Deploy Reference Manual** for background information on XL Deploy a
 
 # Overview #
 
-The XLD Puppet plugin is a XL Deploy plugin that adds capability for rolling out puppet manifests on an overthere.Host.
+The XLD Puppet plugin is a XL Deploy plugin that adds capability for rolling out puppet manifests and modules on an overthere.Host.
 
 # Requirements #
 
 * **Requirements**
 	* **XL Deploy** 4.5.0
+	* **Puppet** 3.4.3
 
 # Installation #
 

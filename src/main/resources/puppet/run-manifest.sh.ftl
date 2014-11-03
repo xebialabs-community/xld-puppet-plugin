@@ -1,4 +1,8 @@
 #!/bin/bash
 
 puppet apply ${deployed.file.name}
-sleep 10
+
+if [ $? -ne 0 ]; then
+  echo "Failed to execute puppet apply manifest."
+  exit 1
+fi

@@ -12,5 +12,10 @@
         <generate-deployable type="puppet.Manifest" extends="udm.BaseDeployableFileArtifact" />
     </type>
 
+    <type type="puppet.InstalledModule" extends="udm.BaseDeployed" deployable-type="puppet.Module" container-type="overthere.Host">
+        <generate-deployable type="puppet.Module" extends="udm.BaseDeployable" />
+        <property name="moduleName" description="Name of the module to be installed from Puppet Forge." />
+    </type>
+
 
 </synthetic>

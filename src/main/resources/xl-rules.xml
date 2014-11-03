@@ -17,6 +17,21 @@
         <steps>
            <os-script>
              <script>puppet/run-manifest</script>
+             <order>71</order>
+           </os-script>
+        </steps>
+    </rule>
+
+    <rule name="puppet.InstalledModule.CREATE_MODIFY" scope="deployed">
+        <conditions>
+            <type>puppet.InstalledModule</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+           <os-script>
+             <script>puppet/install-module</script>
+             <order>70</order>
            </os-script>
         </steps>
     </rule>
