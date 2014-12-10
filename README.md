@@ -25,7 +25,7 @@ Place the plugin JAR file into your `SERVER_HOME/plugins` directory.
 3. Create an application with `puppet.Manifest` as deployable.
 4. Start deploying
 
-_NOTE:_ To Use dicitionary substitution with this plugin in the puppet manifest files you will need to update the debloyit-default.properties file by adding two lines as follows:
+_NOTE:_ To Use dicitionary substitution with this plugin in the puppet manifest files you will need to update the `conf/deployit-defaults.properties` file by adding two lines as follows:
 
 `udm.BaseDeployableArchiveArtifact.scanPlaceholders=true
 udm.BaseDeployableArchiveArtifact.textFileNamesRegex=.+\.(cfg | conf | config | ini | properties | props | txt | pp)
