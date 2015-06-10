@@ -7,6 +7,7 @@
 -->
 #!/bin/bash
 
+echo "puppet apply ${deployed.file.path}"
 puppet apply ${deployed.file.path}
 
 if [ $? -ne 0 ]; then

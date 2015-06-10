@@ -7,6 +7,8 @@
 -->
 @echo off
 
+
+echo "puppet apply ${deployed.file.path}"
 puppet apply ${deployed.file.path}
 
 set PUPPET_EXIT_CODE=%ERRORLEVEL%
