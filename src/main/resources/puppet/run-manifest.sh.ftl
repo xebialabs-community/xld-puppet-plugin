@@ -7,7 +7,7 @@
 -->
 #!/bin/bash
 
-puppet apply ${deployed.file.name}
+puppet apply ${deployed.file.path}
 
 if [ $? -ne 0 ]; then
   echo "Failed to execute puppet apply manifest."
