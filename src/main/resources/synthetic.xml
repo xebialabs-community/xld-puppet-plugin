@@ -18,7 +18,7 @@
     </type>
 
     <type-modification type="puppet.Manifest">
-        <property name="textFileNamesRegex" default=".+\.(properties | pp)"/>
+        <property name="textFileNamesRegex" default=".+\.(properties | pp)" hidden="true"/>
     </type-modification>
 
 </synthetic>
