@@ -7,7 +7,7 @@ deploy:
   provider: releases
   api_key:
     secure: DZc+uRLKkptVx7vhvdtyP7HFHf09BjvXwFgqpNr7H63tIHdtErxCsMfQ5X6IjAJ+P66y4gBFKXKfv4pP58YRFNbZlJitkYW/Y3c1PLIMh3JlWgWnuF5/w3KYl9rru3sBNBlrnNw2wpxfpDQPa8ye0JEbDeMyB/EIsN01l84cgaM=
-  file: build/libs/xld-puppet-plugin-1.0.2.jar
+  file: build/libs/xld-puppet-plugin-1.0.3.jar
   skip_cleanup: true
   on:
     all_branches: true
