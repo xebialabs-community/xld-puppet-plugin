@@ -24,4 +24,9 @@
     <property name="textFileNamesRegex" default=".+\.(properties | pp)" hidden="true"/>
   </type-modification>
 
+  <type type="puppet.InstalledTarBallModule" extends="udm.BaseDeployedArtifact" deployable-type="puppet.TarBallModule" container-type="overthere.Host">
+    <generate-deployable type="puppet.TarBallModule" extends="udm.BaseDeployableArchiveArtifact"/>
+  </type>
+
+
 </synthetic>

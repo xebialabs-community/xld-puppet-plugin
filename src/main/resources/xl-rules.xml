@@ -37,4 +37,20 @@
       </os-script>
     </steps>
   </rule>
+
+  <rule name="puppet.InstalledTarBallModule.CREATE_MODIFY" scope="deployed">
+    <conditions>
+      <type>puppet.InstalledTarBallModule</type>
+      <operation>CREATE</operation>
+      <operation>MODIFY</operation>
+    </conditions>
+    <steps>
+      <os-script>
+        <description expression="true">"Install tarball module '%s' on '%s' " %  (deployed.name,deployed.container.name)</description>
+        <script>puppet/install-tarball-module</script>
+        <order>70</order>
+      </os-script>
+    </steps>
+  </rule>
+
 </rules>
