@@ -6,33 +6,35 @@
 
 -->
 <rules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns="http://www.xebialabs.com/xl-deploy/xl-rules" >
+  xmlns="http://www.xebialabs.com/xl-deploy/xl-rules" >
 
-    <rule name="puppet.AppliedManifest.CREATE_MODIFY" scope="deployed">
-        <conditions>
-            <type>puppet.AppliedManifest</type>
-            <operation>CREATE</operation>
-            <operation>MODIFY</operation>
-        </conditions>
-        <steps>
-           <os-script>
-             <script>puppet/run-manifest</script>
-             <order>71</order>
-           </os-script>
-        </steps>
-    </rule>
+  <rule name="puppet.AppliedManifest.CREATE_MODIFY" scope="deployed">
+    <conditions>
+      <type>puppet.AppliedManifest</type>
+      <operation>CREATE</operation>
+      <operation>MODIFY</operation>
+    </conditions>
+    <steps>
+      <os-script>
+        <description expression="true">"Apply manifest on %s " % deployed.container.name</description>
+        <script>puppet/run-manifest</script>
+        <order>71</order>
+      </os-script>
+    </steps>
+  </rule>
 
-    <rule name="puppet.InstalledModule.CREATE_MODIFY" scope="deployed">
-        <conditions>
-            <type>puppet.InstalledModule</type>
-            <operation>CREATE</operation>
-            <operation>MODIFY</operation>
-        </conditions>
-        <steps>
-           <os-script>
-             <script>puppet/install-module</script>
-             <order>70</order>
-           </os-script>
-        </steps>
-    </rule>
+  <rule name="puppet.InstalledModule.CREATE_MODIFY" scope="deployed">
+    <conditions>
+      <type>puppet.InstalledModule</type>
+      <operation>CREATE</operation>
+      <operation>MODIFY</operation>
+    </conditions>
+    <steps>
+      <os-script>
+        <description expression="true">"Install module on %s " %  deployed.container.name</description>
+        <script>puppet/install-module</script>
+        <order>70</order>
+      </os-script>
+    </steps>
+  </rule>
 </rules>
