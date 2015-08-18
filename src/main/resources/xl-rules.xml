@@ -16,7 +16,7 @@
     </conditions>
     <steps>
       <os-script>
-        <description expression="true">"Apply manifest on %s " % deployed.container.name</description>
+        <description expression="true">"Apply manifest '%s' on '%s' " % (deployed.name,deployed.container.name)</description>
         <script>puppet/run-manifest</script>
         <order>71</order>
       </os-script>
@@ -31,7 +31,7 @@
     </conditions>
     <steps>
       <os-script>
-        <description expression="true">"Install module on %s " %  deployed.container.name</description>
+        <description expression="true">"Install module '%s' on '%s' " %  (deployed.name,deployed.container.name)</description>
         <script>puppet/install-module</script>
         <order>70</order>
       </os-script>

@@ -6,19 +6,22 @@
 
 -->
 <synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xmlns="http://www.xebialabs.com/deployit/synthetic" xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
+  xmlns="http://www.xebialabs.com/deployit/synthetic" xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
 
-    <type type="puppet.AppliedManifest" extends="udm.BaseDeployedArtifact" deployable-type="puppet.Manifest" container-type="overthere.Host">
-        <generate-deployable type="puppet.Manifest" extends="udm.BaseDeployableFileArtifact"/>
-    </type>
+  <type type="puppet.AppliedManifest" extends="udm.BaseDeployedArtifact" deployable-type="puppet.Manifest" container-type="overthere.Host">
+    <generate-deployable type="puppet.Manifest" extends="udm.BaseDeployableFileArtifact"/>
+  </type>
 
-    <type type="puppet.InstalledModule" extends="udm.BaseDeployed" deployable-type="puppet.Module" container-type="overthere.Host">
-        <generate-deployable type="puppet.Module" extends="udm.BaseDeployable"/>
-        <property name="moduleName" description="Name of the module to be installed from Puppet Forge."/>
-    </type>
+  <type type="puppet.InstalledModule" extends="udm.BaseDeployed" deployable-type="puppet.Module" container-type="overthere.Host">
+    <generate-deployable type="puppet.Module" extends="udm.BaseDeployable"/>
+    <property name="moduleName" description="Name of the module to be installed from Puppet Forge."/>
+    <property name="version" required="false" description="version of the module to be installed from Puppet Forge."/>
+    <property name="force" kind="boolean" default="false" required="false" description="Force overwrite of existing module, if any. Implies --ignore-dependencies"/>
+    <property name="ignoreDependencies" kind="boolean"  required="false" default="false" description="Do not attempt to install dependencies. Implied by --force."/>
+  </type>
 
-    <type-modification type="puppet.Manifest">
-        <property name="textFileNamesRegex" default=".+\.(properties | pp)" hidden="true"/>
-    </type-modification>
+  <type-modification type="puppet.Manifest">
+    <property name="textFileNamesRegex" default=".+\.(properties | pp)" hidden="true"/>
+  </type-modification>
 
 </synthetic>
