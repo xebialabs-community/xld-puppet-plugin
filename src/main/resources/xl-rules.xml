@@ -18,7 +18,7 @@
       <os-script>
         <description expression="true">"Apply manifest '%s' on '%s' " % (deployed.name,deployed.container.name)</description>
         <script>puppet/run-manifest</script>
-        <order>71</order>
+        <order>72</order>
       </os-script>
     </steps>
   </rule>
@@ -48,7 +48,7 @@
       <os-script>
         <description expression="true">"Install tarball module '%s' on '%s' " %  (deployed.name,deployed.container.name)</description>
         <script>puppet/install-tarball-module</script>
-        <order>70</order>
+        <order>71</order>
       </os-script>
     </steps>
   </rule>
