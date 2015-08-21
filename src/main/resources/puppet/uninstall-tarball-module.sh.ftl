@@ -5,16 +5,13 @@
     FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
 
 -->
-@echo off
+#!/bin/bash
 
+echo "${deployed.container.puppetHome}/puppet module uninstall ${previousDeployed.name}"
 
-echo "${deployed.container.puppetHome}\puppet apply ${deployed.file.path}"
-${deployed.container.puppetHome}\puppet apply ${deployed.file.path}
+${deployed.container.puppetHome}/puppet module uninstall ${previousDeployed.name}
 
-set PUPPET_EXIT_CODE=%ERRORLEVEL%
-
-if not [%PUPPET_EXIT_CODE%]==[0] (
-  echo "Failed to execute puppet apply manifest."
-  exit %PUPPET_EXIT_CODE%
-)
-
+if [ $? -ne 0 ]; then
+  echo "Failed to execute puppet module install."
+  exit 1
+fi

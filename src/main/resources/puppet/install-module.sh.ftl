@@ -7,7 +7,7 @@
 -->
 #!/bin/bash
 
-puppet module install ${deployed.moduleName} <#if deployed.version?has_content > --version ${deployed.version} </#if> <#if deployed.force> --force  </#if> <#if deployed.ignoreDependencies> --ignore-dependencies  </#if> <#if deployed.debug> --debug  </#if>
+${deployed.container.puppetHome}/puppet module install ${deployed.moduleName} <#if deployed.version?has_content > --version ${deployed.version} </#if> <#if deployed.force> --force  </#if> <#if deployed.ignoreDependencies> --ignore-dependencies  </#if> <#if deployed.debug> --debug  </#if>
 
 
 if [ $? -ne 0 ]; then

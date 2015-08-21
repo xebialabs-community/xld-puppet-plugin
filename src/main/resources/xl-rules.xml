@@ -5,52 +5,121 @@
     FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
 
 -->
-<rules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://www.xebialabs.com/xl-deploy/xl-rules" >
+<rules
+        xmlns="http://www.xebialabs.com/xl-deploy/xl-rules">
 
-  <rule name="puppet.AppliedManifest.CREATE_MODIFY" scope="deployed">
-    <conditions>
-      <type>puppet.AppliedManifest</type>
-      <operation>CREATE</operation>
-      <operation>MODIFY</operation>
-    </conditions>
-    <steps>
-      <os-script>
-        <description expression="true">"Apply manifest '%s' on '%s' " % (deployed.name,deployed.container.name)</description>
-        <script>puppet/run-manifest</script>
-        <order>72</order>
-      </os-script>
-    </steps>
-  </rule>
+    <rule name="puppet.AppliedManifest.CREATE_MODIFY" scope="deployed">
+        <conditions>
+            <type>puppet.AppliedManifest</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <description expression="true">"Apply manifest '%s' on '%s' " % (deployed.name,deployed.container.name)</description>
+                <script>puppet/run-manifest</script>
+                <order>72</order>
+            </os-script>
+        </steps>
+    </rule>
 
-  <rule name="puppet.InstalledModule.CREATE_MODIFY" scope="deployed">
-    <conditions>
-      <type>puppet.InstalledModule</type>
-      <operation>CREATE</operation>
-      <operation>MODIFY</operation>
-    </conditions>
-    <steps>
-      <os-script>
-        <description expression="true">"Install module '%s' on '%s' " %  (deployed.name,deployed.container.name)</description>
-        <script>puppet/install-module</script>
-        <order>70</order>
-      </os-script>
-    </steps>
-  </rule>
+    <rule name="puppet.AppliedManifestFolder.CREATE_MODIFY" scope="deployed">
+        <conditions>
+            <type>puppet.AppliedManifestFolder</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <description expression="true">"Apply manifest folder '%s' on '%s' " % (deployed.name,deployed.container.name)</description>
+                <script>puppet/run-manifest-folder</script>
+                <order>72</order>
+                <freemarker-context>
+                    <environmentId expression="true">deployedApplication.environment.id</environmentId>
+                    <versionId expression="true">deployedApplication.version.id</versionId>
+                </freemarker-context>
+            </os-script>
+        </steps>
+    </rule>
 
-  <rule name="puppet.InstalledTarBallModule.CREATE_MODIFY" scope="deployed">
-    <conditions>
-      <type>puppet.InstalledTarBallModule</type>
-      <operation>CREATE</operation>
-      <operation>MODIFY</operation>
-    </conditions>
-    <steps>
-      <os-script>
-        <description expression="true">"Install tarball module '%s' on '%s' " %  (deployed.name,deployed.container.name)</description>
-        <script>puppet/install-tarball-module</script>
-        <order>71</order>
-      </os-script>
-    </steps>
-  </rule>
+    <rule name="puppet.AppliedManifestFolder.NOOP" scope="deployed">
+        <conditions>
+            <type>puppet.AppliedManifestFolder</type>
+            <operation>NOOP</operation>
+            <expression>deployed.applyOnNoop</expression>
+        </conditions>
+        <steps>
+            <os-script>
+                <description expression="true">"Apply manifest folder '%s' on '%s' " % (deployed.name,deployed.container.name)</description>
+                <script>puppet/run-manifest-folder</script>
+                <order>72</order>
+                <freemarker-context>
+                    <environmentId expression="true">deployedApplication.environment.id</environmentId>
+                    <versionId expression="true">deployedApplication.version.id</versionId>
+                </freemarker-context>
+            </os-script>
+        </steps>
+    </rule>
+
+
+    <rule name="puppet.InstalledModule.CREATE_MODIFY" scope="deployed">
+        <conditions>
+            <type>puppet.InstalledModule</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <description expression="true">"Install module '%s' on '%s' " % (deployed.name,deployed.container.name)</description>
+                <script>puppet/install-module</script>
+                <order>70</order>
+            </os-script>
+        </steps>
+    </rule>
+
+    <rule name="puppet.InstalledModule.MODIFY_DESTROY" scope="deployed">
+        <conditions>
+            <type>puppet.InstalledModule</type>
+            <operation>DESTROY</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <description expression="true">"Uninstall module '%s' on '%s' " % (previousDeployed.name,previousDeployed.container.name)</description>
+                <script>puppet/uninstall-module</script>
+                <order>40</order>
+            </os-script>
+        </steps>
+    </rule>
+
+    <rule name="puppet.InstalledTarBallModule.CREATE_MODIFY" scope="deployed">
+        <conditions>
+            <type>puppet.InstalledTarBallModule</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <description expression="true">"Install tarball module '%s' on '%s' " % (deployed.name,deployed.container.name)</description>
+                <script>puppet/install-tarball-module</script>
+                <order>71</order>
+            </os-script>
+        </steps>
+    </rule>
+
+    <rule name="puppet.InstalledTarBallModule.DESTROY_MODIFY" scope="deployed">
+        <conditions>
+            <type>puppet.InstalledTarBallModule</type>
+            <operation>DESTROY</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <description expression="true">"Uninstall tarball module '%s' on '%s' " % (previousDeployed.name,previousDeployed.container.name)</description>
+                <script>puppet/uninstall-tarball-module</script>
+                <order>40</order>
+            </os-script>
+        </steps>
+    </rule>
 
 </rules>

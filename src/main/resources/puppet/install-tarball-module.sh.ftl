@@ -7,7 +7,7 @@
 -->
 #!/bin/bash
 
-puppet module install ${deployed.file.path} --ignore-dependencies <#if deployed.debug> --debug  </#if>
+${deployed.container.puppetHome}/puppet module install ${deployed.file.path} --ignore-dependencies <#if deployed.debug> --debug  </#if>
 
 if [ $? -ne 0 ]; then
   echo "Failed to execute puppet module install."

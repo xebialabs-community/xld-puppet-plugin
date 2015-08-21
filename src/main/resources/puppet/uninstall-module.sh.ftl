@@ -7,10 +7,11 @@
 -->
 #!/bin/bash
 
-echo "${deployed.container.puppetHome}/puppet apply ${deployed.file.path}"
-${deployed.container.puppetHome}/puppet apply ${deployed.file.path}
+echo "${deployed.container.puppetHome}/puppet module uninstall ${previousDeployed.moduleName}  <#if previousDeployed.force> --force  </#if>"
+${deployed.container.puppetHome}/puppet module uninstall ${previousDeployed.moduleName}  <#if previousDeployed.force> --force  </#if>
+
 
 if [ $? -ne 0 ]; then
-  echo "Failed to execute puppet apply manifest."
+  echo "Failed to execute puppet module uninstall."
   exit 1
 fi
