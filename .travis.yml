@@ -6,7 +6,7 @@ notifications:
 deploy:
   provider: releases
   api_key:
-    secure: DZc+uRLKkptVx7vhvdtyP7HFHf09BjvXwFgqpNr7H63tIHdtErxCsMfQ5X6IjAJ+P66y4gBFKXKfv4pP58YRFNbZlJitkYW/Y3c1PLIMh3JlWgWnuF5/w3KYl9rru3sBNBlrnNw2wpxfpDQPa8ye0JEbDeMyB/EIsN01l84cgaM=
+    secure: S2uJMgLaP5mYwc2v6NaEmN+o0rLJfEqrzpyfLEleL3tTTeK2Qgst47tch1/fi/S7pSelkKCORWdomqnAbjmje4VtzNuHioYOm2CoWp4xKosblyhvdpQT4JL7Itt3F0u++b2keMgWFgcuiCKPkM0f6qrkp+lmi2XPJctJ21ybzHQ=
   file: build/libs/xld-puppet-plugin-1.0.3.jar
   skip_cleanup: true
   on:
